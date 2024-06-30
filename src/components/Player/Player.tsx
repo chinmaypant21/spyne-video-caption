@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { SyntheticEvent, useEffect, useRef, useState } from 'react'
 
 import CaptionGenerator from 'components/CaptionGenerator/CaptionGenerator';
 import styles from './Player.module.css'
@@ -10,6 +10,14 @@ interface Props {
 const Player = ({ src }: Props) => {
     const trackRef = useRef<HTMLTrackElement>(null);
     const videoRef = useRef<HTMLVideoElement>(null);
+
+    const [isLoaded, setIsLoaded] = useState<boolean>(false);
+    const [duration, setDuration] = useState<number>(0);
+
+    function handleLoad(e: SyntheticEvent<HTMLVideoElement>){
+        setIsLoaded(true);
+        setDuration(e.currentTarget.duration)
+    }
 
     function handleAddCaptions(captionData: string) {
         if (!captionData && trackRef.current) {
@@ -34,6 +42,7 @@ const Player = ({ src }: Props) => {
             <div className={styles.videoContainer}  >
 
                 <video
+                    onLoadedMetadata={handleLoad}
                     className={styles.videoScreen}
                     ref={videoRef}
                     src={src}
@@ -49,10 +58,13 @@ const Player = ({ src }: Props) => {
                 </video>
             </div>
 
-            <CaptionGenerator
+            {
+                isLoaded &&
+                <CaptionGenerator
                 onSetCaptions={handleAddCaptions}
-                videoDuration={videoRef.current?.duration}
-            />
+                videoDuration={duration}
+                />
+            }
         </div>
     )
 }

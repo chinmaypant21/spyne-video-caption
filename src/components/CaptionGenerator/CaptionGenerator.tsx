@@ -4,7 +4,12 @@ import { convertToVTT } from "libs/vtt";
 
 import styles from './CaptionGenerator.module.css'
 
-const CaptionGenerator = ({ onSetCaptions, videoDuration }: any) => {
+interface Props {
+    onSetCaptions?: Function,
+    videoDuration: number
+}
+
+const CaptionGenerator = ({ onSetCaptions, videoDuration }: Props) => {
     const [captions, setCaptions] = useState<Caption[]>([]);
     const [captionText, setCaptionText] = useState<string>('');
     const [startTimestamp, setStartTimestamp] = useState<string>('');
@@ -13,12 +18,12 @@ const CaptionGenerator = ({ onSetCaptions, videoDuration }: any) => {
     function handleUpdateCaption() {
         const caption_vtt = convertToVTT(captions);
 
-        onSetCaptions(caption_vtt) //Callback
+        onSetCaptions?.(caption_vtt) //Callback
     }
 
     function handleResetCaption() {
         setCaptions([]);
-        onSetCaptions('')
+        onSetCaptions?.('')
     }
 
     const handleAddCaption = () => {
@@ -53,9 +58,7 @@ const CaptionGenerator = ({ onSetCaptions, videoDuration }: any) => {
 
 
     return (
-        <div className={styles.container}>
-            
-            <h1 className={styles.heading}>{videoDuration + ''}</h1>
+        <div className={styles.container}>            
             <h1 className={styles.heading}>Generate Captions</h1>
             <section className={styles.addCaptionContainer}>
                 <div className={styles.inputContainer}>
