@@ -1,0 +1,81 @@
+h1, h2{
+    color: gray;
+}
+
+.addCaptionContainer{
+    display: flex;
+    /* flex-direction: column; */
+    gap: 10px;
+    align-items: center;
+    padding: 12px;
+    border-radius: 12px;
+}
+
+.inputContainer{
+    display: flex;
+    /* flex-direction: column;  */
+    /* width: 300px; */
+    gap: 10px;
+
+    :is(input, textarea){
+        height: 20px;
+        padding: 5px;
+        font-size: large;
+    }
+
+}
+
+button{
+    background-color: rgb(178, 122, 19);
+    color: white;
+    border: unset;
+    cursor: pointer;
+}
+
+.addBtn{
+    padding: 8px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    border-radius: 8px;
+}
+
+.captionContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-inline: 20px;
+}
+
+.captionItem{
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
+    font-size: 1.2em;
+    color: black;   
+    align-items: center;
+}
+
+.captionText{
+    display: flex;
+    flex-direction: column;
+}
+
+.removeBtn{
+    font-size: 1em;
+    border-radius: 6px;
+    padding: 5px;
+}
+
+.submitContainer{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-block: 15px;
+
+    button{
+        border-radius: 8px;
+        font-size: 1.3em;
+        font-weight: 600;
+        padding: 10px 15px;
+    }
+}
