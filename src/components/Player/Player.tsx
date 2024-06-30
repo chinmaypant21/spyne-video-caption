@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import CaptionGenerator from "components/CaptionGenerator/CaptionGenerator"
+import CaptionGenerator from 'components/CaptionGenerator/CaptionGenerator';
 import styles from './Player.module.css'
 
 interface Props {
