@@ -1,4 +1,4 @@
-import { SyntheticEvent, useEffect, useRef, useState } from 'react'
+import { SyntheticEvent, useRef, useState } from 'react'
 
 import CaptionGenerator from 'components/CaptionGenerator/CaptionGenerator';
 import styles from './Player.module.css'
